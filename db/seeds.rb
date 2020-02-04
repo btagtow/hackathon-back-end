@@ -5,22 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Launch.destroy_all
-response = RestClient.get('https://launchlibrary.net/1.3/launch/')
+Pod.destroy_all
+response = RestClient.get('https://apodapi.herokuapp.com/api/?start_date=2019-01-01&end_date=2019-3-31&thumbs=true&image_thumbnail_size=480&image_thumbnail_size=240')
 parsed_response = JSON.parse(response)
 
-parsed_response["launches"].map do |launch|
+parsed_response.map do |image|
 
-    pads = launch["location"]["pads"].map do |pad| 
-        pad["name"]
-    end
+    # pads = launch["location"]["pads"].map do |pad| 
+    #     pad["name"]
+    # end
 
-    Launch.create(name: 
-    launch["name"], 
-    date: launch["windowstart"], 
-    agency: pads, 
-    rocket: launch["rocket"]["name"])
+    Pod.create(
+    title: image["title"],
+    image_url: image["url"],
+    pod_url: image["apod_site"],
+    date: image["date"], 
+    description: image["description"])
 
 end 
 
 
+# t.string :title
+# t.string :image_url
+# t.string :pod_url
+# t.string :date
+# t.string :description

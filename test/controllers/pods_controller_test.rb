@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LaunchesControllerTest < ActionDispatch::IntegrationTest
+class PodsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

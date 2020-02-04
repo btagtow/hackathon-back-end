@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_04_181036) do
+ActiveRecord::Schema.define(version: 2020_02_04_200817) do
 
-  create_table "launches", force: :cascade do |t|
-    t.string "name"
+  create_table "pods", force: :cascade do |t|
+    t.string "title"
+    t.string "image_url"
+    t.string "pod_url"
     t.string "date"
-    t.string "agency"
-    t.string "rocket"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
