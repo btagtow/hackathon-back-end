@@ -1,8 +1,13 @@
 class PodsController < ApplicationController
 
     def index
-        @pods = Pod.all 
-        render json: @pods
+        current = Pod.find_by(date: params["date"])
+        if current
+            render json: current
+        else 
+            @pods = Pod.all 
+            render json: @pods
+        end
     end 
 
     def show 

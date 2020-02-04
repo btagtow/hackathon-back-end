@@ -11,10 +11,6 @@ parsed_response = JSON.parse(response)
 
 parsed_response.map do |image|
 
-    # pads = launch["location"]["pads"].map do |pad| 
-    #     pad["name"]
-    # end
-
     Pod.create(
     title: image["title"],
     image_url: image["url"],
@@ -25,8 +21,3 @@ parsed_response.map do |image|
 end 
 
 
-# t.string :title
-# t.string :image_url
-# t.string :pod_url
-# t.string :date
-# t.string :description
